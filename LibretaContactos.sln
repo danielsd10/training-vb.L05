@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "LibretaForms", "LibretaForms\LibretaForms.vbproj", "{501D93EA-795A-4116-A7A5-600CF4B4F298}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "AccesoDatos", "AccesoDatos\AccesoDatos.vbproj", "{B7A8382F-00CB-4A0D-AA7B-5F6C473180CE}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Entidades", "Entidades\Entidades.vbproj", "{5553ED7C-2D80-43B3-98DB-2A2143733DEC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{501D93EA-795A-4116-A7A5-600CF4B4F298}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{501D93EA-795A-4116-A7A5-600CF4B4F298}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{501D93EA-795A-4116-A7A5-600CF4B4F298}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{501D93EA-795A-4116-A7A5-600CF4B4F298}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B7A8382F-00CB-4A0D-AA7B-5F6C473180CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B7A8382F-00CB-4A0D-AA7B-5F6C473180CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B7A8382F-00CB-4A0D-AA7B-5F6C473180CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B7A8382F-00CB-4A0D-AA7B-5F6C473180CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5553ED7C-2D80-43B3-98DB-2A2143733DEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5553ED7C-2D80-43B3-98DB-2A2143733DEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5553ED7C-2D80-43B3-98DB-2A2143733DEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5553ED7C-2D80-43B3-98DB-2A2143733DEC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
