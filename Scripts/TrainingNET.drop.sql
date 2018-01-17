@@ -1,0 +1,14 @@
+
+DROP PROCEDURE EliminarContacto
+GO
+DROP PROCEDURE 
+
+DROP TABLE Correos
+GO
+DROP TABLE Telefonos
+GO
+DROP TABLE Contactos
+GO
+
+DROP DATABASE TrainingNET
+GO
