@@ -13,6 +13,11 @@
             _Apellido = value
         End Set
     End Property
+    Public ReadOnly Property NombreCompleto As String
+        Get
+            Return _Apellido & ", " & _Nombre
+        End Get
+    End Property
     Public Property DNI As String
         Get
             Return _DNI

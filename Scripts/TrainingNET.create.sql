@@ -15,7 +15,7 @@ CREATE TABLE Contactos(
 	dni VARCHAR(8),
 	fecha_nacimiento DATE,
 	direccion VARCHAR(200),
-	fecha_registro TIMESTAMP,
+	fecha_registro DATETIME DEFAULT GETDATE(),
 	PRIMARY KEY (id_contacto),
 	CHECK (tipo IN ('P', 'C'))
 )
@@ -50,7 +50,7 @@ AS
 BEGIN
 	SELECT * FROM Contactos c
 	WHERE c.tipo = 'P'
-	AND (@Buscar = NULL OR (c.nombre LIKE '%' + @Buscar + '%' OR c.apellido LIKE '%' + @Buscar + '%'))
+	AND (@Buscar IS NULL OR (c.nombre LIKE '%' + @Buscar + '%' OR c.apellido LIKE '%' + @Buscar + '%'))
 	ORDER BY c.apellido ASC, c.nombre ASC
 END
 GO
@@ -62,7 +62,7 @@ AS
 BEGIN
 	SELECT * FROM Contactos c
 	WHERE c.tipo = 'E'
-	AND (@Buscar = NULL OR c.nombre LIKE '%' + @Buscar + '%')
+	AND (@Buscar IS NULL OR c.nombre LIKE '%' + @Buscar + '%')
 	ORDER BY c.nombre ASC
 END
 GO
@@ -97,8 +97,8 @@ CREATE PROCEDURE RegistrarPersona (
 ) AS
 BEGIN
 	
-	INSERT INTO Contactos (nombre, apellido, dni, fecha_nacimiento, direccion)
-	VALUES (@Nombre, @Apellido, @DNI, @FechaNacimiento, @Direccion)
+	INSERT INTO Contactos (tipo, nombre, apellido, dni, fecha_nacimiento, direccion)
+	VALUES ('P', @Nombre, @Apellido, @DNI, @FechaNacimiento, @Direccion)
 
 	SELECT @Id = ISNULL(SCOPE_IDENTITY(),-1)
 
@@ -113,8 +113,8 @@ CREATE PROCEDURE RegistrarEmpresa (
 ) AS
 BEGIN
 	
-	INSERT INTO Contactos (nombre, ruc, direccion)
-	VALUES (@Nombre, @RUC, @Direccion)
+	INSERT INTO Contactos (tipo, nombre, ruc, direccion)
+	VALUES ('E', @Nombre, @RUC, @Direccion)
 
 	SELECT @Id = ISNULL(SCOPE_IDENTITY(),-1)
 

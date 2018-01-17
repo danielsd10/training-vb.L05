@@ -32,7 +32,7 @@ Namespace My
 
         <Global.System.Diagnostics.DebuggerStepThroughAttribute()> _
         Protected Overrides Sub OnCreateMainForm()
-            Me.MainForm = Global.LibretaForms.Form1
+            Me.MainForm = Global.LibretaForms.frmContactos
         End Sub
     End Class
 End Namespace

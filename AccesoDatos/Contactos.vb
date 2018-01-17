@@ -10,6 +10,49 @@ Public Class Contactos
         CadenaConexion = "Data Source=localhost;Initial Catalog=TrainingNET;Integrated Security=True"
     End Sub
 
+    Public Function RegistrarPersona(objPersona As Persona) As Boolean
+        Dim cnx As New SqlConnection
+        Dim cmd As New SqlCommand
+        Dim params(5) As SqlParameter
+
+        Try
+            cnx = New SqlConnection(CadenaConexion)
+            cnx.Open()
+
+            cmd = New SqlCommand()
+            cmd.Connection = cnx
+            cmd.CommandType = CommandType.StoredProcedure
+            cmd.CommandText = "RegistrarPersona"
+
+            params(0) = New SqlParameter("Nombre", SqlDbType.VarChar)
+            params(0).Value = objPersona.Nombre
+            params(1) = New SqlParameter("Apellido", SqlDbType.VarChar)
+            params(1).Value = objPersona.Apellido
+            params(2) = New SqlParameter("DNI", SqlDbType.VarChar)
+            params(2).Value = objPersona.DNI
+            params(3) = New SqlParameter("Direccion", SqlDbType.VarChar)
+            params(3).Value = objPersona.Direccion
+            params(4) = New SqlParameter("FechaNacimiento", SqlDbType.Date)
+            params(4).Value = objPersona.FechaNacimiento.ToString("yyyy-MM-dd")
+            params(5) = New SqlParameter("Id", SqlDbType.Int)
+            params(5).Direction = ParameterDirection.Output
+            cmd.Parameters.AddRange(params)
+
+            cmd.ExecuteNonQuery()
+
+            Return params(5).Value > 0
+
+        Catch ex As SqlException
+            Return False
+        Catch ex As Exception
+            Return False
+        Finally
+            cmd.Dispose()
+            cnx.Dispose()
+            cnx.Close()
+        End Try
+    End Function
+
     Public Function ListarPersonas(Optional strBuscar As String = "") As List(Of Persona)
         Dim cnx As New SqlConnection
         Dim cmd As New SqlCommand
@@ -41,8 +84,8 @@ Public Class Contactos
                     objPersona.Apellido = reader("apellido")
                     objPersona.DNI = reader("dni")
                     objPersona.Direccion = reader("direccion")
+                    objPersona.FechaNacimiento = reader("fecha_nacimiento")
                     lstPersonas.Add(objPersona)
-                    reader.NextResult()
                 End While
             End Using
 
@@ -56,6 +99,39 @@ Public Class Contactos
             cnx.Close()
         End Try
         Return lstPersonas
+    End Function
+
+    Public Function EliminarContacto(Id As Integer) As Boolean
+        Dim cnx As New SqlConnection
+        Dim cmd As New SqlCommand
+        Dim params(0) As SqlParameter
+
+        Try
+            cnx = New SqlConnection(CadenaConexion)
+            cnx.Open()
+
+            cmd = New SqlCommand()
+            cmd.Connection = cnx
+            cmd.CommandType = CommandType.StoredProcedure
+            cmd.CommandText = "EliminarContacto"
+
+            params(0) = New SqlParameter("Id", SqlDbType.VarChar)
+            params(0).Value = Id
+            cmd.Parameters.AddRange(params)
+
+            cmd.ExecuteNonQuery()
+
+            Return True
+
+        Catch ex As SqlException
+            Return False
+        Catch ex As Exception
+            Return False
+        Finally
+            cmd.Dispose()
+            cnx.Dispose()
+            cnx.Close()
+        End Try
     End Function
 
 End Class
