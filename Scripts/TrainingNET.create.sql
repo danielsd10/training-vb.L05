@@ -17,7 +17,7 @@ CREATE TABLE Contactos(
 	direccion VARCHAR(200),
 	fecha_registro DATETIME DEFAULT GETDATE(),
 	PRIMARY KEY (id_contacto),
-	CHECK (tipo IN ('P', 'C'))
+	CHECK (tipo IN ('P', 'E'))
 )
 GO
 
